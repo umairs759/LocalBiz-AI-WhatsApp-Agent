@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalBiz AI | WhatsApp Agent Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #075e54 0%, #128c7e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .logo {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+        h1 {
+            color: #075e54;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+        .badge {
+            background: #25D366;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        .status-card {
+            background: #f0f2f5;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .status-led {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #f5b042;
+            animation: pulse 1.5s infinite;
+            margin-right: 8px;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        .feature-list {
+            text-align: left;
+            margin: 24px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .feature {
+            background: #e9ecef;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        .feature::before {
+            content: "✅ ";
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 20px;
+        }
+        a {
+            color: #075e54;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        @media (max-width: 500px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">🤖💬</div>
+        <h1>LocalBiz AI WhatsApp Agent</h1>
+        <div class="badge">FREE SaaS ALTERNATIVE</div>
+        
+        <div class="status-card">
+            <span class="status-led"></span>
+            <strong>Status:</strong> Agent is <span id="status-text">checking...</span>
+        </div>
+
+        <p style="margin-bottom: 16px;">
+            Your AI receptionist is running. Customers can message your WhatsApp number and get instant AI replies.
+        </p>
+
+        <div class="feature-list">
+            <div class="feature">Official WhatsApp API (No Ban)</div>
+            <div class="feature">Dual LLM Failover (Groq → Gemini)</div>
+            <div class="feature">Pure English Responses</div>
+            <div class="feature">Docker Ready</div>
+            <div class="feature">24/7 Automated</div>
+            <div class="feature">100% Open Source</div>
+        </div>
+
+        <p>
+            📞 <strong>Test the bot:</strong> Send a message to your business WhatsApp number.
+        </p>
+
+        <div class="footer">
+            <a href="https://github.com/YOUR_USERNAME/LocalBiz-AI-WhatsApp-Agent" target="_blank">📦 GitHub Repository</a> &nbsp;|&nbsp;
+            <a href="#" id="refreshBtn">🔄 Refresh Status</a>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            const statusSpan = document.getElementById('status-text');
+            try {
+                // Try to call the backend health endpoint (optional, you can add it to main.py)
+                const response = await fetch('/health', { method: 'GET', cache: 'no-cache' });
+                if (response.ok) {
+                    statusSpan.innerHTML = '🟢 Live & Running';
+                    statusSpan.style.color = '#25D366';
+                } else {
+                    statusSpan.innerHTML = '🟡 Backend responding but /health missing';
+                }
+            } catch (err) {
+                statusSpan.innerHTML = '🔴 Cannot reach backend (is server running?)';
+                statusSpan.style.color = '#dc3545';
+            }
+        }
+        checkStatus();
+        document.getElementById('refreshBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            checkStatus();
+        });
+    </script>
+</body>
+</html>
