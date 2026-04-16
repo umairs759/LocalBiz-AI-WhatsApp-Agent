@@ -236,7 +236,7 @@ docker-compose down
 The API will be available at http://localhost:8000. To verify it's running, you can add a health endpoint (optional – see API section).
 ```
 
-## 6. ## 6. Running Without Docker (for development)
+## 6. Running Without Docker (for development)
 
 cd backend
 python -m venv venv
