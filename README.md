@@ -140,7 +140,7 @@ This is the fastest way to get the bot running on your local machine for testing
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/LocalBiz-AI-WhatsApp-Agent.git
+git clone https://github.com/umairs759/LocalBiz-AI-WhatsApp-Agent.git
 cd LocalBiz-AI-WhatsApp-Agent
 
 # 2. Copy environment variables and edit them
@@ -497,7 +497,7 @@ We are continuously evolving this project into the ultimate AI automation tool. 
 ---
 
 ## 📞 Support, Contact & Community
-- **Bug Reports & Feature Requests:** Please [open an issue](https://github.com/YOUR_USERNAME/LocalBiz-AI-WhatsApp-Agent/issues) on GitHub.
+- **Bug Reports & Feature Requests:** Please [open an issue](https://github.com/umairs759/LocalBiz-AI-WhatsApp-Agent/issues) on GitHub.
 - **Community Discussions:** Join the conversation in our [GitHub Discussions](#) tab.
 
 <div align="center">
@@ -507,7 +507,7 @@ We are continuously evolving this project into the ultimate AI automation tool. 
 <br>
 
 <div align="center">
-  <b>Built with ❤️ by Muhammad Umair Ghaffar</b><br>
+  <b>Built with ❤️ by Muhammad Umair</b><br>
   <i>An 18-year-old AI Automation Specialist & Developer based in Lahore, Pakistan 🇵🇰</i>
   <br><br>
   <b>If this project helped you save SaaS fees, please consider giving it a ⭐ on GitHub and sharing it with local business owners!</b>
