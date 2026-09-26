@@ -1,5 +1,29 @@
 <div align="center">
-  <img src="logo.png" alt="LocalBiz AI Logo" width="100"/>
+  <img src="logo.png" alt="LocalBiz AI Logo" width="110" style="border-radius: 20%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 12px;"/>
+  <h1>🍽️ LocalBiz AI — Autonomous Restaurant Cockpit</h1>
+  <p><b>24/7 AI WhatsApp Food Ordering Receptionist, Automated Dispatch & Thermal POS Printing for Anna AI OS</b></p>
+
+  <p>
+    <a href="https://anna.partners"><img src="https://img.shields.io/badge/Anna_AI_OS-v0.1.0_(Verified)-7C3AED?style=for-the-badge&logo=probot&logoColor=white" alt="Anna AI OS"/></a>
+    <a href="#-official-anna-os-tool-specification"><img src="https://img.shields.io/badge/Executa_Plugin-Active-06B6D4?style=for-the-badge&logo=fastapi&logoColor=white" alt="Executa Tool"/></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/></a>
+    <a href="https://developers.facebook.com/docs/whatsapp"><img src="https://img.shields.io/badge/Meta_Cloud_API-Official-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp API"/></a>
+  </p>
+
+  <p>
+    <a href="https://anna.partners"><img src="https://img.shields.io/badge/🚀_Install_on_Anna_OS-LocalBiz_AI-black?style=flat-square&logo=apple" alt="Install"/></a>
+    <a href="#quick-start-5-minutes"><img src="https://img.shields.io/badge/⚡_Quick_Start-Docker_Deploy-blue?style=flat-square&logo=docker" alt="Docker"/></a>
+    <a href="#privacy"><img src="https://img.shields.io/badge/🔒_Privacy_Policy-Verified-success?style=flat-square" alt="Privacy"/></a>
+  </p>
+
+  <br/>
+  <img src="cover.png" alt="LocalBiz AI Cockpit Banner" width="100%" style="border-radius: 10px; border: 1px solid #30363d;"/>
+</div>
+
+---
+
+> **Enterprise-grade restaurant automation at $0 SaaS fees.**  
+> LocalBiz AI replaces manual phone ordering and expensive dispatch platforms by pairing the **Official Meta WhatsApp Cloud API** with **Dual-Engine LLM Failover (Groq Llama 3.3 ⚡ → Gemini 2.0 Flash 🛡️)** and an interactive **Live Orders Cockpit** running natively on **Anna AI OS**.
   <h1>LocalBiz AI — Autonomous Restaurant Receptionist</h1>
   <p><b>24/7 AI-Powered WhatsApp Food Ordering, Dispatch Engine & Live POS Cockpit for Anna AI OS</b></p>
 
@@ -113,7 +137,20 @@ v
 5. The AI reply is sent back to Meta API using your access token.
 6. Meta delivers the reply to the customer.
 
-No queue, no delay – average response time ~2 seconds.
+---
+
+### ⚙️ Official Anna OS Tool Specification
+
+LocalBiz AI runs as a native sandboxed tool on **Anna AI OS** via Executa runtime:
+
+| Specification | Configuration |
+|---|---|
+| **App ID / Slug** | `localbiz-official` (App ID: 342) |
+| **Official Tool ID** | `tool-umairs759-localbiz-official-bcxnqkk6` |
+| **Runtime Engine** | Python 3.11+ Sandboxed Executa (Version 560) |
+| **Primary Method** | `order_dispatch(customer_message)` |
+| **POS Receipt Specs** | 80mm ESC/POS Automated Kitchen Order Ticket (KOT) Generation |
+| **CSP Compliance** | Strict inline sanitation, zero unauthorized external font CDNs |
 
 ---
 
@@ -408,25 +445,31 @@ Then restart the server. The frontend dashboard will use /health to show status.
 
 
 ## 📁 Project Structure
-```LocalBiz-AI-WhatsApp-Agent/
-│
-├── backend/
-│ ├── __init__.py # Makes backend a Python package
-│ ├── main.py # FastAPI server & webhook handler
-│ ├── requirements.txt # Python dependencies
-│ ├── .env.example # Template for environment variables
-│ └── utils/
-│ ├── __init__.py # Makes utils a subpackage
-│ └── ai_failover.py # Dual-engine failover logic
-│
-├── frontend/
-│ └── index.html # Simple status dashboard
-│
-├── docker-compose.yml # One-command orchestration
-├── Dockerfile # Container definition
-├── .gitignore # Ignore sensitive and temporary files
-├── LICENSE # MIT License
-├── README.md # This file
+
+```text
+LocalBiz-AI-WhatsApp-Agent/
+├── .anna/                       # Anna OS internal build cache (gitignored)
+├── bundle/                      # Production UI Cockpit assets for Anna OS
+│   └── index.html               # Live Restaurant Cockpit, order stream & POS printer
+├── executas/                    # Anna OS Backend Plugins
+│   └── localbiz-official/
+│       ├── executa.json         # Executa Tool definition & schema
+│       └── localbiz_official_plugin.py # Sandboxed dispatch & order parser
+├── backend/                     # Standalone FastAPI microservice
+│   ├── main.py                  # Meta Webhook handler & dispatch router
+│   ├── requirements.txt         # Production dependencies
+│   ├── .env.example             # Environment configuration template
+│   └── utils/
+│       ├── __init__.py          # Package initialization
+│       └── ai_failover.py       # Groq Llama 3.3 -> Gemini 2.0 Flash logic
+├── manifest.json                # Anna AI OS official App Manifest (v0.1.0)
+├── logo.png                     # Official 256x256 application logo
+├── cover.png                    # High-res Cockpit dashboard screenshot
+├── docker-compose.yml           # Multi-container orchestration
+├── Dockerfile                   # Hardened production container
+├── .gitignore                   # Credential & secret protection
+├── LICENSE                      # MIT Open Source License
+└── README.md                    # Project documentation & Privacy Policy
 └── CONTRIBUTING.md # Guidelines for contributors
 ```
 ```Note: The __init__.py files can be completely empty. They just signal Python that the folders are importable packages. ```
