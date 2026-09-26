@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "tagline": "Autonomous WhatsApp AI Receptionist & Food Order Engine",
   "description": "Enterprise-grade WhatsApp AI business receptionist built for local restaurants, food chains, and retail stores. Features native Roman Urdu and English natural language understanding, real-time lead capture, automated Kitchen Order Ticket (KOT) generation, Groq Llama-3 and Google Gemini failover architecture, and human agent escalation.",
-  "category": "business",
   "categories": [
     "business",
     "productivity",
