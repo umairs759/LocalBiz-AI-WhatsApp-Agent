@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#07080b" />
+<meta name="description" content="LocalBiz AI — Autonomous WhatsApp Restaurant Receptionist & Food Order Dispatch Engine for Anna AI OS." />
+<title>LocalBiz AI · Restaurant OS Cockpit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg-void:      #07080b;
+  --bg-base:      #0b0e14;
+  --bg-surface:   #131622;
+  --bg-elevated:  #182030;
+  --bg-input:     #080a0f;
+  --bg-hover:     #1e2638;
+
+  --bd-subtle:    rgba(255,255,255,0.07);
+  --bd-medium:    rgba(255,255,255,0.14);
+  --bd-strong:    rgba(255,255,255,0.22);
+  --bd-amber:     rgba(245,158,11,0.42);
+  --bd-emerald:   rgba(16,185,129,0.42);
+  --bd-rose:      rgba(244,63,94,0.42);
+  --bd-sky:       rgba(56,189,248,0.42);
+
+  --ink-pure:     #ffffff;
+  --ink-1:        #e5eaf2;
+  --ink-2:        #94a3b8;
+  --ink-3:        #64748b;
+  --ink-4:        #475569;
+
+  --amber:        #f59e0b;
+  --amber-hi:     #fbbf24;
+  --amber-soft:   rgba(245,158,11,0.12);
+  --amber-glow:   rgba(245,158,11,0.30);
+
+  --emerald:      #10b981;
+  --emerald-hi:   #34d399;
+  --emerald-soft: rgba(16,185,129,0.12);
+  --emerald-glow: rgba(16,185,129,0.25);
+  --emerald-bubble: #0a2d21;
+
+  --rose:         #f43f5e;
+  --rose-soft:    rgba(244,63,94,0.12);
+
+  --sky:          #38bdf8;
+  --sky-soft:     rgba(56,189,248,0.12);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans:    "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --r-xs: 4px; --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-pill: 9999px;
+  --sh-card:  0 1px 0 rgba(255,255,255,0.05) inset, 0 8px 24px -10px rgba(0,0,0,0.6);
+  --sh-panel: 0 1px 0 rgba(255,255,255,0.06) inset, 0 16px 40px -14px rgba(0,0,0,0.7);
+  --sh-modal: 0 32px 96px -20px rgba(0,0,0,0.9);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.15s;
+  --dur: 0.24s;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-void);
+  color: var(--ink-1);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+button, input, textarea, select { font: inherit; color: inherit; background: none; border: 0; outline: 0; }
+button { cursor: pointer; user-select: none; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: var(--amber); color: var(--bg-void); }
+
+.scroll-y { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--bg-elevated) transparent; }
+.scroll-y::-webkit-scrollbar { width: 6px; }
+.scroll-y::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 4px; }
+
+/* HEADER */
+.cockpit-header {
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--bd-subtle);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 62px;
+  flex-shrink: 0;
+}
+.brand-cluster { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  width: 38px; height: 38px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, #1c2436 0%, #101420 100%);
+  border: 1px solid var(--bd-medium);
+  display: grid; place-items: center;
+  color: var(--amber);
+  box-shadow: var(--sh-card);
+}
+.brand-titles h1 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-pure);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge-anna {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  background: var(--amber-soft);
+  color: var(--amber);
+  border: 1px solid var(--bd-amber);
+  padding: 2px 7px;
+  border-radius: var(--r-xs);
+}
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1px;
+}
+.brand-sub strong { color: var(--ink-1); font-weight: 600; }
+.brand-sub__verified { color: var(--emerald); display: inline-flex; align-items: center; gap: 3px; }
+
+.session-strip {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-pill);
+  padding: 4px;
+}
+.session-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  border-right: 1px solid var(--bd-subtle);
+}
+.session-cell:last-child { border-right: 0; }
+.session-cell__val { color: var(--ink-pure); font-weight: 600; }
+.session-cell__val--amber { color: var(--amber); }
+.session-cell__val--sky { color: var(--sky); }
+
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 34px; height: 34px;
+  border-radius: var(--r-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  color: var(--ink-2);
+  display: grid; place-items: center;
+  transition: all var(--dur-fast);
+}
+.icon-btn:hover { background: var(--bg-elevated); color: var(--ink-pure); border-color: var(--bd-medium); }
+.icon-btn.is-active { color: var(--amber); border-color: var(--bd-amber); background: var(--amber-soft); }
+
+.runtime-beacon {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+}
+.runtime-beacon.is-live { border-color: var(--bd-emerald); color: var(--emerald); }
+.runtime-beacon.is-standalone { border-color: var(--bd-amber); color: var(--amber); }
+.beacon-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+}
+.runtime-beacon.is-standalone .beacon-dot { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+/* WORKSPACE */
+.workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(360px, 1.15fr);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* STREAM */
+.stream-pane {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--bd-subtle);
+  background: radial-gradient(ellipse at 50% -10%, rgba(245,158,11,0.05) 0%, transparent 45%), var(--bg-void);
+  overflow: hidden;
+}
+.wa-header {
+  padding: 11px 20px;
+  background: rgba(11,14,20,0.92);
+  border-bottom: 1px solid var(--bd-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wa-identity { display: flex; align-items: center; gap: 12px; }
+.wa-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #065f46 100%);
+  display: grid; place-items: center;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+}
+.wa-name {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-pure);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wa-name__verified { color: var(--emerald); }
+.wa-channel { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3); }
+
+.wa-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--bd-emerald);
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.wa-pill--sky { border-color: var(--bd-sky); background: var(--sky-soft); color: var(--sky); }
+
+.chat-scroller {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 22px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.date-divider {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--bg-surface);
+  color: var(--ink-3);
+  padding: 3px 11px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--bd-subtle);
+  text-transform: uppercase;
+}
+.msg {
+  max-width: 82%;
+  padding: 11px 15px;
+  border-radius: var(--r-md);
+  font-size: 13.5px;
+  position: relative;
+}
+.msg--ai {
+  align-self: flex-start;
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-medium);
+  color: var(--ink-pure);
+  border-top-left-radius: 3px;
+}
+.msg--user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--emerald-bubble) 0%, #061e16 100%);
+  border: 1px solid var(--bd-emerald);
+  color: #fff;
+  border-top-right-radius: 3px;
+}
+.msg__meta {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--ink-3);
+  margin-top: 6px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.msg--user .msg__meta { color: rgba(255,255,255,0.6); }
+
+/* KOT Ticket */
+.kot-ticket {
+  margin-top: 11px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  background: rgba(245,158,11,0.06);
+  border: 1px dashed var(--bd-amber);
+}
+.kot-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--amber);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(245,158,11,0.3);
+}
+.kot-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  padding: 3px 0;
+}
+.kot-row__qty { color: var(--amber); font-family: var(--font-mono); font-weight: 600; margin-right: 6px; }
+.kot-subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ink-2);
+  border-top: 1px dashed rgba(245,158,11,0.25);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.kot-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--ink-pure);
+  border-top: 1px solid rgba(245,158,11,0.38);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.kot-total__val { color: var(--amber); }
+.kot-footer {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed rgba(245,158,11,0.25);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.kot-btn {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 7px 8px;
+  border-radius: var(--r-xs);
+  border: 1px solid var(--bd-subtle);
+  background: var(--bg-surface);
+  color: var(--ink-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all var(--dur-fast);
+}
+.kot-btn--primary { background: var(--amber-soft); border-color: var(--bd-amber); color: var(--amber); }
+.kot-btn--emerald { background: var(--emerald-soft); border-color: var(--bd-emerald); color: var(--emerald); }
+
+.chip-lane {
+  padding: 9px 20px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  background: rgba(11,14,20,0.8);
+  border-top: 1px solid var(--bd-subtle);
+}
+.chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  color: var(--ink-2);
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  font-size: 11.5px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--dur-fast);
+}
+.chip:hover { background: var(--bg-elevated); border-color: var(--bd-amber); color: var(--ink-pure); }
+
+.composer {
+  padding: 14px 20px;
+  background: var(--bg-base);
+  border-top: 1px solid var(--bd-subtle);
+  display: flex;
+  gap: 10px;
+}
+.composer__field { flex: 1; }
+.composer__field input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--bd-medium);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: var(--ink-pure);
+}
+.composer__field input:focus { border-color: var(--amber); }
+.dispatch-btn {
+  background: linear-gradient(180deg, var(--amber-hi) 0%, var(--amber) 100%);
+  color: var(--bg-void);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 12px 18px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* TELEMETRY DECK */
+.telemetry-deck {
+  background: var(--bg-base);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+.view-mode-bar {
+  display: flex;
+  background: var(--bg-surface);
+  padding: 3px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--bd-subtle);
+  gap: 4px;
+}
+.mode-btn {
+  flex: 1;
+  padding: 7px 10px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-3);
+  border-radius: var(--r-xs);
+  text-transform: uppercase;
+}
+.mode-btn.is-active { background: var(--bg-elevated); color: var(--ink-pure); border: 1px solid var(--bd-medium); }
+
+.metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.metric-tile {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.metric-tile__label { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; color: var(--ink-3); }
+.metric-tile__val { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--ink-pure); }
+.metric-tile__val--amber { color: var(--amber); }
+.metric-tile__val--emerald { color: var(--emerald); }
+.metric-tile__val--sky { color: var(--sky); }
+
+.panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.panel-title { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; text-transform: uppercase; color: var(--ink-3); }
+
+.stat-row { display: flex; justify-content: space-between; font-size: 12.5px; }
+.stat-label { color: var(--ink-2); }
+.stat-value { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--ink-pure); }
+
+.intent-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--r-xs);
+  background: var(--bg-base);
+  border: 1px solid var(--bd-subtle);
+}
+.intent-tag--order { background: var(--emerald-soft); border-color: var(--bd-emerald); color: var(--emerald); }
+.intent-tag--menu  { background: var(--sky-soft); border-color: var(--bd-sky); color: var(--sky); }
+
+.preset-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.preset-chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--r-xs);
+  background: var(--bg-base);
+  border: 1px solid var(--bd-subtle);
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.preset-chip.is-active { background: var(--amber-soft); border-color: var(--bd-amber); color: var(--amber); }
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; color: var(--ink-3); }
+.field input, .field textarea {
+  background: var(--bg-input);
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-sm);
+  padding: 8px 11px;
+  font-size: 12px;
+  color: var(--ink-pure);
+  width: 100%;
+}
+.field textarea { resize: vertical; min-height: 58px; }
+
+.deck-actions { display: flex; gap: 6px; }
+.action-btn {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  color: var(--ink-2);
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 9px 10px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.action-btn:hover { background: var(--bg-elevated); color: var(--ink-pure); }
+
+/* RECEIPT MODAL */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(7,8,11,0.88);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop.is-open { display: flex; }
+.modal-shell {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-medium);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+.receipt {
+  background: #fdfaf2;
+  color: #1a1a1a;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 18px;
+  border-radius: var(--r-sm);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.receipt__header { text-align: center; border-bottom: 1px dashed #1a1a1a; padding-bottom: 8px; margin-bottom: 8px; }
+.receipt__biz { font-size: 15px; font-weight: 700; }
+.receipt__row { display: flex; justify-content: space-between; padding: 2px 0; }
+.receipt__total { display: flex; justify-content: space-between; font-weight: 700; font-size: 13px; border-top: 2px solid #1a1a1a; margin-top: 6px; padding-top: 6px; }
+
+/* CODE CARD */
+.code-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--bd-subtle);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.code-card__head {
+  padding: 9px 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--bd-subtle);
+  background: var(--bg-base);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+.code-card__body {
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+  max-height: 220px;
+  overflow-y: auto;
+}
+</style>
+</head>
+
+<body>
+<header class="cockpit-header">
+  <div class="brand-cluster">
+    <div class="brand-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div class="brand-titles">
+      <h1>LocalBiz AI <span class="badge-anna">Anna OS App</span></h1>
+      <div class="brand-sub">
+        <span class="brand-sub__verified">● Verified</span>
+        <span>·</span>
+        <strong id="headerBizDisplay">Labaik Broast Operations</strong>
+        <span>·</span>
+        <span id="headerChannelDisplay">+92 300 8472911</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="session-strip">
+    <div class="session-cell">⏱️ <span class="session-cell__val" id="sessionTimer">00:00</span></div>
+    <div class="session-cell">💬 <span class="session-cell__val" id="sessionMsgs">1</span></div>
+    <div class="session-cell">💰 <span class="session-cell__val session-cell__val--amber" id="sessionRevenue">Rs. 0</span></div>
+    <div class="session-cell">⚡ <span class="session-cell__val session-cell__val--sky" id="sessionLatency">~115ms</span></div>
+  </div>
+
+  <div class="header-actions">
+    <button class="icon-btn is-active" id="audioToggle" title="Audio Toggle">🔊</button>
+    <div class="runtime-beacon is-standalone" id="runtimeBeacon">
+      <span class="beacon-dot"></span>
+      <span id="engineStatus">Standalone Simulator</span>
+    </div>
+  </div>
+</header>
+
+<main class="workspace">
+  <!-- LEFT: WHATSAPP CHAT STREAM -->
+  <section class="stream-pane">
+    <div class="wa-header">
+      <div class="wa-identity">
+        <div class="wa-avatar" id="waAvatar">LB</div>
+        <div>
+          <div class="wa-name">
+            <span id="waBizName">Labaik Broast Operations</span>
+            <span class="wa-name__verified">✓</span>
+          </div>
+          <div class="wa-channel">Official Meta WhatsApp Cloud API</div>
+        </div>
+      </div>
+      <div class="wa-right">
+        <span class="wa-pill">24/7 AI Order Engine</span>
+        <span class="wa-pill wa-pill--sky">Groq Llama-3.3 ➔ Gemini</span>
+      </div>
+    </div>
+
+    <div class="chat-scroller scroll-y" id="chatHistory">
+      <div class="date-divider">Today · Live WhatsApp Session</div>
+      <article class="msg msg--ai">
+        Assalam-o-Alaikum! Welcome to <strong id="greetingBizName">Labaik Broast Operations</strong>. I am your 24/7 AI Receptionist. Aap menu check kar sakte hain, deals dekh sakte hain ya direct delivery order place kar sakte hain!
+        <div class="msg__meta">LocalBiz AI · Just now</div>
+      </article>
+    </div>
+
+    <nav class="chip-lane">
+      <button class="chip" data-query="Show me the full menu and today's hot deals" type="button">📋 Menu &amp; Deals</button>
+      <button class="chip" data-query="What are your opening hours and delivery locations?" type="button">⏰ Timings &amp; Areas</button>
+      <button class="chip" data-query="Please deliver 2 Quarter Broast and 1 Zinger burger to Gulberg 3, phone 03028472199" type="button">🛵 Order (Gulberg)</button>
+      <button class="chip" data-query="Deliver 1 Family Deal to DHA Phase 5, phone 03218847291" type="button">🍗 Order (DHA)</button>
+      <button class="chip" data-query="I need to speak with the manager regarding my order" type="button">⚠️ Escalate</button>
+    </nav>
+
+    <footer class="composer">
+      <div class="composer__field">
+        <input type="text" id="userInput" placeholder="Customer message likhein (e.g. 2 Quarter broast to Gulberg)..." />
+      </div>
+      <button class="dispatch-btn" id="sendBtn" type="button">
+        <span>Send</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </footer>
+  </section>
+
+  <!-- RIGHT: TELEMETRY DECK -->
+  <aside class="telemetry-deck scroll-y">
+    <div class="view-mode-bar">
+      <button class="mode-btn is-active" id="modeBtnTelemetry" type="button">Mission Telemetry</button>
+      <button class="mode-btn" id="modeBtnInspector" type="button">SDK Inspector</button>
+    </div>
+
+    <!-- TELEMETRY VIEW -->
+    <div id="telemetryViewContainer" style="display:flex;flex-direction:column;gap:12px;">
+      <div class="metric-grid">
+        <div class="metric-tile">
+          <span class="metric-tile__label">Orders Placed</span>
+          <span class="metric-tile__val metric-tile__val--emerald" id="statOrders">0</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-tile__label">Revenue (PKR)</span>
+          <span class="metric-tile__val metric-tile__val--amber" id="statRevenue">Rs. 0</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-tile__label">Messages</span>
+          <span class="metric-tile__val" id="statMsgs">1</span>
+        </div>
+        <div class="metric-tile">
+          <span class="metric-tile__label">Avg Latency</span>
+          <span class="metric-tile__val metric-tile__val--sky" id="statLatency">~115ms</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Extracted Live Entities</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Detected Intent</span>
+          <span class="intent-tag" id="intentTag">GREETING</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Customer Phone</span>
+          <span class="stat-value" id="leadPhone">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Delivery Area</span>
+          <span class="stat-value" id="leadLocation">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Delivery Charges</span>
+          <span class="stat-value" id="leadDeliveryFee">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Grand Total</span>
+          <span class="stat-value" style="color:var(--amber)" id="orderValue">Rs. 0</span>
+        </div>
+      </div>
+
+      <!-- KNOWLEDGE GROUNDING -->
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-title">Menu Category Presets</span>
+        </div>
+        <div class="preset-row" id="presetRow">
+          <button class="preset-chip is-active" data-preset="broast" type="button">🍗 Broast Specials</button>
+          <button class="preset-chip" data-preset="burgers" type="button">🍔 Burgers &amp; Fast Food</button>
+          <button class="preset-chip" data-preset="family" type="button">👨‍👩‍👧‍👦 Family Platters</button>
+        </div>
+        <div class="field">
+          <label>Brand Name</label>
+          <input type="text" id="configBizName" value="Labaik Broast Operations" />
+        </div>
+        <div class="field">
+          <label>WhatsApp Business Channel</label>
+          <input type="text" id="configBizPhone" value="+92 300 8472911" />
+        </div>
+        <div class="field">
+          <label>Hours &amp; Delivery Policy</label>
+          <input type="text" id="configBizProfile" value="Daily 4:00 PM - 3:00 AM | Main Boulevard | Free Delivery above Rs. 1000" />
+        </div>
+        <div class="field">
+          <label>Menu Matrix (PKR)</label>
+          <textarea id="configMenu">Quarter Broast: Rs. 480 | Half Broast: Rs. 890 | Full Broast: Rs. 1650 | Zinger Burger: Rs. 420 | Chicken Roll: Rs. 280 | Family Deal: Rs. 1950</textarea>
+        </div>
+      </div>
+
+      <div class="deck-actions">
+        <button class="action-btn" id="clearBtn" type="button">Reset</button>
+        <button class="action-btn" id="exportBtn" type="button" style="color:var(--emerald)">Export JSON</button>
+      </div>
+    </div>
+
+    <!-- SDK INSPECTOR VIEW -->
+    <div id="inspectorViewContainer" style="display:none;flex-direction:column;gap:12px;">
+      <div class="code-card">
+        <div class="code-card__head">
+          <span>Payload Contract</span>
+          <span id="reqBadge">POST</span>
+        </div>
+        <div class="code-card__body" id="requestViewer">// Awaiting message dispatch...</div>
+      </div>
+      <div class="code-card">
+        <div class="code-card__head">
+          <span>Tool Execution Response</span>
+          <span id="respBadge">200 OK</span>
+        </div>
+        <div class="code-card__body" id="responseViewer">// Result will appear here...</div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<!-- THERMAL RECEIPT MODAL -->
+<div class="modal-backdrop" id="receiptModal">
+  <div class="modal-shell">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <strong style="color:var(--ink-pure)">Thermal Kitchen Receipt · 80mm</strong>
+      <button id="modalClose" style="color:var(--ink-3);font-size:16px;">✕</button>
+    </div>
+    <div class="receipt" id="receiptBody"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;">
+      <button class="action-btn" id="copyReceiptBtn">Copy</button>
+      <button class="action-btn" id="printBtn" style="background:var(--amber);color:#000;font-weight:700;">Print Receipt</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+let AnnaAppRuntime = null;
+try {
+  const sdk = await import("/static/anna-apps/_sdk/latest/index.js");
+  AnnaAppRuntime = sdk.AnnaAppRuntime;
+} catch (e) {
+  console.warn("[LocalBiz] Running in standalone preview simulator.");
+}
+
+const TOOL_ID = "tool-dev-localbiz-official";
+const DELIVERY_THRESHOLD = 1000;
+const DELIVERY_FEE = 150;
+
+const PRESETS = {
+  broast: {
+    name: "Labaik Broast Operations",
+    phone: "+92 300 8472911",
+    profile: "Daily 4:00 PM - 3:00 AM | Main Boulevard | Free Delivery above Rs. 1000",
+    menu: "Quarter Broast: Rs. 480 | Half Broast: Rs. 890 | Full Broast: Rs. 1650 | Zinger Burger: Rs. 420 | Chicken Roll: Rs. 280 | Family Deal: Rs. 1950",
+    items: [
+      { key: "quarter broast", name: "Quarter Broast", price: 480 },
+      { key: "half broast",    name: "Half Broast",    price: 890 },
+      { key: "full broast",    name: "Full Broast",    price: 1650 },
+      { key: "broast",         name: "Quarter Broast", price: 480, generic: true },
+      { key: "zinger",         name: "Zinger Burger",  price: 420 },
+      { key: "roll",           name: "Chicken Roll",   price: 280 },
+      { key: "family deal",    name: "Family Deal",    price: 1950 }
+    ]
+  },
+  burgers: {
+    name: "Labaik Broast & Burger House",
+    phone: "+92 300 8472911",
+    profile: "Daily 12:00 PM - 2:00 AM | Mall Road | Free Delivery above Rs. 1000",
+    menu: "Zinger Burger: Rs. 420 | Double Patty Burger: Rs. 650 | Crispy Chicken Roll: Rs. 280 | Fries Platter: Rs. 250",
+    items: [
+      { key: "zinger",        name: "Zinger Burger",       price: 420 },
+      { key: "double patty",  name: "Double Patty Burger", price: 650 },
+      { key: "roll",          name: "Crispy Chicken Roll", price: 280 },
+      { key: "fries",         name: "Fries Platter",       price: 250 }
+    ]
+  },
+  family: {
+    name: "Labaik Grand Feast Catering",
+    phone: "+92 300 8472911",
+    profile: "24/7 Bulk Orders | Gulberg & DHA | Free Delivery on Family Bundles",
+    menu: "Family Deal 1: Rs. 1950 | Mega Broast Feast: Rs. 3400 | Party Box: Rs. 4500",
+    items: [
+      { key: "family deal", name: "Family Deal 1",      price: 1950 },
+      { key: "mega feast",  name: "Mega Broast Feast",  price: 3400 },
+      { key: "party box",   name: "Party Box",          price: 4500 }
+    ]
+  }
+};
+
+const LANDMARKS = ["gulberg", "dha", "johar town", "model town", "cantt", "bahria", "mall road", "faisal town", "wapda town"];
+
+let currentPresetKey = "broast";
+let lastKot = null;
+const session = {
+  startTime: Date.now(),
+  messages: 1,
+  orders: 0,
+  revenue: 0,
+  latencies: []
+};
+
+const $ = id => document.getElementById(id);
+
+function syncBranding() {
+  const name = $("configBizName").value || "Labaik Broast Operations";
+  const phone = $("configBizPhone").value || "+92 300 8472911";
+  $("headerBizDisplay").textContent = name;
+  $("headerChannelDisplay").textContent = phone;
+  $("waBizName").textContent = name;
+  $("greetingBizName").textContent = name;
+}
+$("configBizName").addEventListener("input", syncBranding);
+$("configBizPhone").addEventListener("input", syncBranding);
+
+function parseOrder(text) {
+  const p = PRESETS[currentPresetKey];
+  const low = text.toLowerCase();
+  const items = [];
+  let subtotal = 0;
+
+  for (const it of p.items) {
+    if (low.includes(it.key)) {
+      const match = low.match(new RegExp(`(\\d+)\\s*${it.key}`));
+      const qty = match ? parseInt(match[1]) : 1;
+      items.push({ name: it.name, price: it.price, qty });
+      subtotal += it.price * qty;
+    }
+  }
+
+  const phoneMatch = text.match(/(?:\+?92|0)?[\s-]?3\d{2}[\s-]?\d{7}/);
+  const phone = phoneMatch ? phoneMatch[0].replace(/[\s-]/g, "") : null;
+
+  let loc = null;
+  for (const lm of LANDMARKS) {
+    if (low.includes(lm)) {
+      loc = lm.toUpperCase();
+      break;
+    }
+  }
+
+  const isDelivery = /(deliver|delivery|rider|home|address)/i.test(low);
+  const deliveryFee = !isDelivery ? 0 : (subtotal >= DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE);
+  const total = subtotal + deliveryFee;
+
+  let intent = "INQUIRE_INFO";
+  if (/(manager|complaint|admin|human)/i.test(low)) intent = "ESCALATION";
+  else if (items.length > 0) intent = "PLACE_ORDER";
+  else if (/(menu|rate|price|deal|list)/i.test(low)) intent = "INQUIRE_MENU";
+
+  let reply = "";
+  if (intent === "ESCALATION") {
+    reply = "Aapki request front-desk manager ko bhej di gayi hai. Woh 2 minute ke andar aapse WhatsApp par direct contact karenge.";
+  } else if (intent === "PLACE_ORDER") {
+    reply = `Zabardast! Aapka order note ho gaya hai.${deliveryFee === 0 ? " FREE Delivery apply ho chuki hai." : ` Delivery charges Rs. ${deliveryFee} hain.`} Total: Rs. ${total}. Aapka phone number aur address note kar liya gaya hai!`;
+  } else if (intent === "INQUIRE_MENU") {
+    reply = `Hamara fresh menu yeh raha: ${p.menu}. Rs. ${DELIVERY_THRESHOLD} se zyada ke order par Delivery bilkul FREE hai!`;
+  } else {
+    reply = `${name} — ${p.profile}. Delivery aur Takeaway dono dastiyab hain.`;
+  }
+
+  return {
+    reply,
+    intent,
+    lead: {
+      phone,
+      location: loc || (isDelivery ? "Customer Location" : "Takeaway"),
+      subtotal,
+      deliveryFee,
+      total,
+      items
+    }
+  };
+}
+
+function appendMsg(text, role, lead) {
+  const el = document.createElement("article");
+  el.className = `msg msg--${role}`;
+
+  let ticketHtml = "";
+  if (lead && lead.items && lead.items.length > 0) {
+    lastKot = lead;
+    const rows = lead.items.map(i => `
+      <div class="kot-row">
+        <span><span class="kot-row__qty">${i.qty}×</span>${i.name}</span>
+        <span>Rs. ${i.price * i.qty}</span>
+      </div>
+    `).join("");
+
+    ticketHtml = `
+      <div class="kot-ticket">
+        <div class="kot-head">
+          <span>KOT TICKET · LB-${Math.floor(1000 + Math.random()*9000)}</span>
+          <span>ONLINE</span>
+        </div>
+        ${rows}
+        <div class="kot-subtotal"><span>Delivery</span><span>${lead.deliveryFee === 0 ? "FREE" : `Rs. ${lead.deliveryFee}`}</span></div>
+        <div class="kot-total"><span>Grand Total</span><span class="kot-total__val">Rs. ${lead.total}</span></div>
+        <div class="kot-footer">
+          <button class="kot-btn kot-btn--primary" id="btnKotPrint">Print Receipt</button>
+          <button class="kot-btn kot-btn--emerald" id="btnKotDispatch">Dispatch Rider</button>
+        </div>
+      </div>
+    `;
+  }
+
+  el.innerHTML = `${text}${ticketHtml}<div class="msg__meta"><span>${role === "ai" ? "LocalBiz AI" : "Customer"}</span> · Just now</div>`;
+  $("chatHistory").appendChild(el);
+  $("chatHistory").scrollTop = $("chatHistory").scrollHeight;
+
+  session.messages++;
+  $("sessionMsgs").textContent = session.messages;
+  $("statMsgs").textContent = session.messages;
+
+  if (lead && lead.items && lead.items.length > 0) {
+    session.orders++;
+    session.revenue += lead.total;
+    $("statOrders").textContent = session.orders;
+    $("statRevenue").textContent = `Rs. ${session.revenue}`;
+    $("sessionRevenue").textContent = `Rs. ${session.revenue}`;
+    $("leadPhone").textContent = lead.phone || "—";
+    $("leadLocation").textContent = lead.location;
+    $("leadDeliveryFee").textContent = lead.deliveryFee === 0 ? "FREE" : `Rs. ${lead.deliveryFee}`;
+    $("orderValue").textContent = `Rs. ${lead.total}`;
+  }
+
+  const btnPrint = el.querySelector("#btnKotPrint");
+  if (btnPrint) btnPrint.addEventListener("click", () => openReceipt(lead));
+  const btnDisp = el.querySelector("#btnKotDispatch");
+  if (btnDisp) btnDisp.addEventListener("click", () => {
+    appendMsg("Rider assign ho chuka hai. Order kitchen se nikal kar 25–30 minute mein pohanch jaye ga.", "ai", null);
+  });
+}
+
+function openReceipt(lead) {
+  if (!lead) return;
+  const items = lead.items.map(i => `<div class="receipt__row"><span>${i.qty}× ${i.name}</span><span>Rs. ${i.price * i.qty}</span></div>`).join("");
+  $("receiptBody").innerHTML = `
+    <div class="receipt__header">
+      <div class="receipt__biz">${$("configBizName").value.toUpperCase()}</div>
+      <div>Main Boulevard · Ph: ${$("configBizPhone").value}</div>
+    </div>
+    <div class="receipt__row"><span>Date:</span><span>${new Date().toLocaleDateString()}</span></div>
+    <div class="receipt__row"><span>Location:</span><span>${lead.location}</span></div>
+    ${lead.phone ? `<div class="receipt__row"><span>Phone:</span><span>${lead.phone}</span></div>` : ""}
+    <hr style="margin:6px 0; border:0; border-top:1px dashed #000;"/>
+    ${items}
+    <hr style="margin:6px 0; border:0; border-top:1px dashed #000;"/>
+    <div class="receipt__row"><span>Delivery:</span><span>${lead.deliveryFee === 0 ? "FREE" : `Rs. ${lead.deliveryFee}`}</span></div>
+    <div class="receipt__total"><span>GRAND TOTAL</span><span>Rs. ${lead.total}</span></div>
+    <div style="text-align:center;margin-top:10px;font-size:10px;">Thank you for ordering with LocalBiz AI!</div>
+  `;
+  $("receiptModal").classList.add("is-open");
+}
+
+$("modalClose").addEventListener("click", () => $("receiptModal").classList.remove("is-open"));
+$("printBtn").addEventListener("click", () => window.print());
+$("copyReceiptBtn").addEventListener("click", () => {
+  navigator.clipboard.writeText($("receiptBody").innerText);
+  alert("Receipt copied to clipboard!");
+});
+
+async function dispatchMessage(text) {
+  const query = text || $("userInput").value.trim();
+  if (!query) return;
+
+  $("userInput").value = "";
+  appendMsg(query, "user", null);
+
+  const t0 = performance.now();
+  const payload = {
+    business_name: $("configBizName").value,
+    customer_message: query
+  };
+  $("requestViewer").textContent = JSON.stringify(payload, null, 2);
+
+  setTimeout(() => {
+    const res = parseOrder(query);
+    const latency = Math.round(performance.now() - t0);
+    session.latencies.push(latency);
+    $("statLatency").textContent = `~${latency}ms`;
+    $("sessionLatency").textContent = `~${latency}ms`;
+
+    $("responseViewer").textContent = JSON.stringify(res, null, 2);
+    $("intentTag").textContent = res.intent;
+    $("intentTag").className = `intent-tag ${res.intent === "PLACE_ORDER" ? "intent-tag--order" : "intent-tag--menu"}`;
+
+    appendMsg(res.reply, "ai", res.lead);
+  }, 450);
+}
+
+$("sendBtn").addEventListener("click", () => dispatchMessage());
+$("userInput").addEventListener("keydown", e => { if (e.key === "Enter") dispatchMessage(); });
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => dispatchMessage(c.dataset.query)));
+
+$("presetRow").addEventListener("click", e => {
+  const chip = e.target.closest(".preset-chip");
+  if (!chip) return;
+  document.querySelectorAll(".preset-chip").forEach(c => c.classList.remove("is-active"));
+  chip.classList.add("is-active");
+  currentPresetKey = chip.dataset.preset;
+  const p = PRESETS[currentPresetKey];
+  $("configBizName").value = p.name;
+  $("configBizProfile").value = p.profile;
+  $("configMenu").value = p.menu;
+  syncBranding();
+});
+
+$("modeBtnTelemetry").addEventListener("click", () => {
+  $("modeBtnTelemetry").classList.add("is-active");
+  $("modeBtnInspector").classList.remove("is-active");
+  $("telemetryViewContainer").style.display = "flex";
+  $("inspectorViewContainer").style.display = "none";
+});
+$("modeBtnInspector").addEventListener("click", () => {
+  $("modeBtnInspector").classList.add("is-active");
+  $("modeBtnTelemetry").classList.remove("is-active");
+  $("telemetryViewContainer").style.display = "none";
+  $("inspectorViewContainer").style.display = "flex";
+});
+
+$("clearBtn").addEventListener("click", () => {
+  $("chatHistory").innerHTML = `<div class="date-divider">Session Reset</div>`;
+  session.orders = 0; session.revenue = 0; session.messages = 0;
+  $("statOrders").textContent = "0"; $("statRevenue").textContent = "Rs. 0";
+  $("orderValue").textContent = "Rs. 0";
+});
+
+$("exportBtn").addEventListener("click", () => {
+  navigator.clipboard.writeText(JSON.stringify(session, null, 2));
+  alert("Session data exported as JSON to clipboard!");
+});
+
+setInterval(() => {
+  const s = Math.floor((Date.now() - session.startTime) / 1000);
+  $("sessionTimer").textContent = `${String(Math.floor(s/60)).padStart(2, '0')}:${String(s%60).padStart(2, '0')}`;
+}, 1000);
+
+syncBranding();
+</script>
+</body>
+</html>

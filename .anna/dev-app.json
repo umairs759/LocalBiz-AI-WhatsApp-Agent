@@ -1,0 +1,15 @@
+{
+  "host": "https://anna.partners",
+  "slug": "localbiz-official",
+  "app_id": 342,
+  "name": "localbiz-official",
+  "registered_at": "2026-09-26T16:02:10.036Z",
+  "cache_version": 3,
+  "environment": "production",
+  "tool_binding": {
+    "tool_id": "tool-dev-localbiz-official",
+    "methods": [
+      "handle_inquiry"
+    ]
+  }
+}

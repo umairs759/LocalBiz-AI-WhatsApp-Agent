@@ -1,0 +1,41 @@
+{
+  "$schema": "https://anna.partners/schemas/app-manifest.v2.json",
+  "name": "LocalBiz AI",
+  "slug": "localbiz-official",
+  "version": "1.0.0",
+  "tagline": "Autonomous WhatsApp AI Receptionist & Food Order Engine",
+  "description": "Enterprise-grade WhatsApp AI business receptionist built for local restaurants, food chains, and retail stores. Features native Roman Urdu and English natural language understanding, real-time lead capture, automated Kitchen Order Ticket (KOT) generation, Groq Llama-3 and Google Gemini failover architecture, and human agent escalation.",
+  "category": "business",
+  "categories": [
+    "business",
+    "productivity",
+    "customer-support"
+  ],
+  "author": {
+    "name": "Muhammad Umair",
+    "github": "https://github.com/umairs759/LocalBiz-AI-WhatsApp-Agent"
+  },
+  "entrypoint": "index.html",
+  "runtime": {
+    "sdk_version": "latest",
+    "permissions": [
+      "tools:invoke",
+      "storage:read",
+      "storage:write",
+      "window:title",
+      "window:ready"
+    ]
+  },
+  "keywords": [
+    "whatsapp-agent",
+    "ai-receptionist",
+    "kot-engine",
+    "local-business",
+    "roman-urdu",
+    "restaurant-automation",
+    "fastapi",
+    "groq",
+    "gemini"
+  ],
+  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'%3E%3C/path%3E%3Cpath d='M8 10h.01'%3E%3C/path%3E%3Cpath d='M12 10h.01'%3E%3C/path%3E%3Cpath d='M16 10h.01'%3E%3C/path%3E%3C/svg%3E"
+}

@@ -1,0 +1,64 @@
+{
+  "schema": 2,
+  "required_executas": [
+    {
+      "tool_id": "tool-dev-localbiz-official"
+    }
+  ],
+  "tags": [
+    "localbiz-official",
+    "whatsapp-agent",
+    "ai-receptionist",
+    "order-engine",
+    "restaurant-automation",
+    "food-beverage"
+  ],
+  "ui": {
+    "bundle": {
+      "format": "static-spa",
+      "entry": "index.html",
+      "external_origins": [
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com"
+      ]
+    },
+    "views": [
+      {
+        "name": "main",
+        "title": "LocalBiz AI — Receptionist & Order Engine",
+        "default": true,
+        "default_size": { "w": 1180, "h": 760 },
+        "min_size": { "w": 380, "h": 540 }
+      }
+    ],
+    "host_api": {
+      "tools": ["tool-dev-localbiz-official"],
+      "storage": ["get", "set", "delete"],
+      "window": ["set_title", "ready"]
+    },
+    "csp_overrides": {
+      "font-src": [
+        "'self'",
+        "https://fonts.gstatic.com",
+        "data:"
+      ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com"
+      ]
+    },
+    "state_merge": "last_writer_wins"
+  },
+  "dev": {
+    "fixtures": ["fixtures/*.jsonl"],
+    "seed_storage": {
+      "localbiz:biz_config": {
+        "name": "Labaik Broast Operations",
+        "profile": "Daily 4:00 PM - 2:00 AM | Main Boulevard | Free Delivery above Rs. 1000",
+        "menu": "Quarter Broast: Rs. 480 | Half Broast: Rs. 890 | Full Broast: Rs. 1650 | Zinger Burger: Rs. 420 | Chicken Roll: Rs. 280 | Family Deal: Rs. 1950"
+      }
+    },
+    "user_id": 1
+  }
+}

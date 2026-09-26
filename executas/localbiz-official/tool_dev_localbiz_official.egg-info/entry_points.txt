@@ -1,0 +1,2 @@
+[console_scripts]
+tool-dev-localbiz-official = localbiz_official_plugin:main
