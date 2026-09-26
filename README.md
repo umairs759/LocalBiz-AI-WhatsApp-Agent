@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="logo.png" alt="LocalBiz AI Logo" width="120" style="border-radius: 22px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); margin-bottom: 16px;"/>
-  <h1>🍽️ LocalBiz AI — Autonomous Restaurant Cockpit</h1>
-  <p><b>24/7 AI-Powered WhatsApp Food Ordering, Live Dispatch Engine & Thermal POS Printing for Anna AI OS</b></p>
+  <img src="logo.png" alt="LocalBiz AI Logo" width="110" style="border-radius: 20%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-bottom: 12px;"/>
+  <h1>🍽️ LocalBiz AI — Autonomous Restaurant Receptionist</h1>
+  <p><b>24/7 AI WhatsApp Food Ordering Receptionist, Automated Dispatch & Thermal POS Printing for Anna AI OS</b></p>
 
   <p>
     <a href="https://anna.partners"><img src="https://img.shields.io/badge/Anna_AI_OS-v0.1.0_(Verified)-7C3AED?style=for-the-badge&logo=probot&logoColor=white" alt="Anna AI OS"/></a>
@@ -12,48 +12,71 @@
 
   <p>
     <a href="https://anna.partners"><img src="https://img.shields.io/badge/🚀_Install_on_Anna_OS-LocalBiz_AI-black?style=flat-square&logo=apple" alt="Install"/></a>
-    <a href="#⚡-quick-start-5-minutes"><img src="https://img.shields.io/badge/⚡_Quick_Start-Docker_Deploy-blue?style=flat-square&logo=docker" alt="Docker"/></a>
+    <a href="#quick-start-5-minutes"><img src="https://img.shields.io/badge/⚡_Quick_Start-Docker_Deploy-blue?style=flat-square&logo=docker" alt="Docker"/></a>
     <a href="#privacy"><img src="https://img.shields.io/badge/🔒_Privacy_Policy-Verified-success?style=flat-square" alt="Privacy"/></a>
   </p>
 
   <br/>
-  <img src="cover.png" alt="LocalBiz AI Cockpit Banner" width="100%" style="border-radius: 12px; border: 1px solid #30363d; margin-top: 10px;"/>
+  <img src="cover.png" alt="LocalBiz AI Cockpit Banner" width="100%" style="border-radius: 10px; border: 1px solid #30363d;"/>
 </div>
 
 ---
 
-> **Enterprise-grade restaurant automation at $0 SaaS subscription fees.**  
-> LocalBiz AI replaces expensive third-party dispatch aggregators and manual order desk staffing by pairing the **Official Meta WhatsApp Cloud API** with **Dual-Engine LLM Failover (Groq Llama 3.3 ⚡ → Gemini 2.0 Flash 🛡️)** and an interactive **Live Orders Cockpit** running natively on **Anna AI OS**.
+> **Enterprise-grade restaurant automation at $0 SaaS fees.**  
+> LocalBiz AI replaces manual phone ordering and expensive dispatch platforms by pairing the **Official Meta WhatsApp Cloud API** with **Dual-Engine LLM Failover (Groq Llama 3.3 ⚡ → Gemini 2.0 Flash 🛡️)** and an interactive **Live Orders Cockpit** running natively on **Anna AI OS**.
+# 🚀 LocalBiz AI WhatsApp Agent – Free SaaS Alternative for Local Businesses
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Made with FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)](https://docker.com)
+[![WhatsApp API](https://img.shields.io/badge/WhatsApp-Official%20API-25D366)](https://developers.facebook.com/docs/whatsapp)
+
+---
+
+# 🚀 LocalBiz AI WhatsApp Agent – Free SaaS Alternative for Local Businesses
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Made with FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)](https://docker.com)
+[![WhatsApp API](https://img.shields.io/badge/WhatsApp-Official%20API-25D366)](https://developers.facebook.com/docs/whatsapp)
+
+> **24/7 AI receptionist for salons, clinics, and cloud kitchens – 100% free, no subscription fees, zero ban risk.**
+
+Local businesses waste hours answering the same questions: "What are your hours?", "How much for a haircut?", "Do you deliver?" This bot automates all that using **official WhatsApp Cloud API** + **dual‑engine LLM failover (Groq Llama 3.3 → Gemini 2.0 Flash)**. Pure English responses. Deploy in 5 minutes with Docker.
 
 ---
 
 ## 📋 Table of Contents
 
-1. [Why This is a SaaS Killer](#-why-this-is-a-saas-killer)
-2. [Features](#-features)
-3. [Architecture Overview](#️-architecture-overview)
-4. [Official Anna OS Tool Specification](#-official-anna-os-tool-specification)
-5. [Tech Stack](#-tech-stack)
-6. [Prerequisites](#-prerequisites)
-7. [Quick Start (5 minutes)](#-quick-start-5-minutes)
-8. [Detailed Setup Guide](#-detailed-setup-guide)
-   - [Meta WhatsApp Cloud API Setup](#1-meta-whatsapp-cloud-api-setup)
-   - [Groq API Key Setup](#2-groq-api-key-setup)
-   - [Gemini API Key Setup](#3-gemini-api-key-setup)
-   - [Environment Configuration](#4-environment-configuration)
-   - [Running Locally with Docker](#5-running-locally-with-docker)
-   - [Running Without Docker](#6-running-without-docker-for-development)
-9. [Webhook Configuration (ngrok)](#-webhook-configuration-ngrok)
-10. [Testing the Bot](#-testing-the-bot)
-11. [Deployment to Production](#-deployment-to-production)
-12. [Troubleshooting & Common Errors](#-troubleshooting--common-errors)
-13. [API Endpoints](#-api-endpoints)
-14. [Environment Variables Reference](#-environment-variables-reference)
-15. [Project Structure](#-project-structure)
-16. [Contributing](#-contributing)
-17. [License](#-license--open-source-usage)
-18. [FAQs](#-frequently-asked-questions-faqs)
-19. [Privacy & Data Handling Policy](#-privacy--data-handling-policy-privacy)
+1. [Why This is a SaaS Killer](#why-this-is-a-saas-killer)
+2. [Features](#features)
+3. [Architecture Overview](#architecture-overview)
+4. [Tech Stack](#tech-stack)
+5. [Prerequisites](#prerequisites)
+6. [Quick Start (5 minutes)](#quick-start-5-minutes)
+7. [Detailed Setup Guide](#detailed-setup-guide)
+   - [Meta WhatsApp Cloud API Setup](#meta-whatsapp-cloud-api-setup)
+   - [Groq API Key Setup](#groq-api-key-setup)
+   - [Gemini API Key Setup](#gemini-api-key-setup)
+   - [Environment Configuration](#environment-configuration)
+   - [Running Locally with Docker](#running-locally-with-docker)
+   - [Running Without Docker](#running-without-docker)
+8. [Webhook Configuration (ngrok)](#webhook-configuration-ngrok)
+9. [Testing the Bot](#testing-the-bot)
+10. [Deployment to Production](#deployment-to-production)
+    - [Render.com](#rendercom)
+    - [Railway.app](#railwayapp)
+    - [AWS EC2 / VPS](#aws-ec2--vps)
+11. [Troubleshooting & Common Errors](#troubleshooting--common-errors)
+12. [API Endpoints](#api-endpoints)
+13. [Environment Variables Reference](#environment-variables-reference)
+14. [Project Structure](#project-structure)
+15. [Contributing](#contributing)
+16. [License](#license)
+17. [FAQs](#faqs)
+18. [Support & Contact](#support--contact)
 
 ---
 
@@ -61,45 +84,53 @@
 
 | Feature | ManyChat / Intercom / Tidio | **LocalBiz AI (This Project)** |
 |---------|-----------------------------|--------------------------------|
-| **Monthly Cost** | $15 – $300+ / mo | **$0** (Meta free tier + Groq/Gemini free tiers) |
-| **WhatsApp Integration** | Third-party proxy | **Official Meta Cloud API** – 1,000 free conversations/month |
-| **Ban Risk** | Moderate to High | **Zero** (100% policy-compliant official API) |
-| **AI Intelligence** | Static GPT-3.5 prompt | **Dual Failover** – Llama 3.3 (70B) → Gemini 2.0 Flash |
-| **Latency** | 3 – 6 seconds | **1 – 2 seconds** (Ultra-fast Groq LPU inference) |
-| **Data Sovereignty** | Vendor-locked | **Self-hostable & Local-first** via Docker & Anna OS |
-| **License** | Closed Proprietary | **MIT License** (Free commercial use) |
+| Monthly cost | $15 – $300+ | **$0** (free tier of Meta API + Groq/Gemini) |
+| WhatsApp integration | Official (but paid) | **Official Meta API** – free first 1k conversations/month |
+| Ban risk | Low | **Zero** (uses official API) |
+| AI engine | Fixed (often GPT-3.5) | **Dual failover** – Llama 3.3 → Gemini 2.0 |
+| Response time | ~2-5 seconds | ~1-3 seconds (Groq is blazing fast) |
+| Self-hostable | No | **Yes** – full control over data |
+| Open source | No | **Yes** – MIT license |
+| Language | English only | English (pure, professional) |
+
+**For a small business handling 30-50 customer messages per day, this bot saves 10+ hours weekly and costs absolutely nothing.**
 
 ---
 
 ## ✨ Features
 
-- ✅ **Official Meta WhatsApp Cloud API** – Cloud-native, zero QR code tethering, zero account ban risk.
-- ✅ **Dual-Engine LLM Failover** – Groq Llama 3.3 executes primary lightning queries; Gemini 2.0 Flash activates seamlessly on rate limits.
-- ✅ **Interactive Anna OS Cockpit** – Real-time visual order queue with instant status toggle and audio notifications.
-- ✅ **Thermal Receipt Generation** – Automatic 80mm ESC/POS Kitchen Order Ticket (KOT) formatting.
-- ✅ **Docker Orchestration** – One-command production deployment with multi-platform compatibility.
-- ✅ **Production-Grade Audit Trails** – Comprehensive structured logging for inbound payloads, NLP extraction, and webhook responses.
+- ✅ **Official WhatsApp API** – No QR code scanning, no ban risk.
+- ✅ **Dual-engine AI failover** – If Groq fails, Gemini takes over instantly.
+- ✅ **Pure English responses** – Professional and clear.
+- ✅ **Docker support** – One command to run anywhere.
+- ✅ **Webhook ready** – Works with Meta’s verification.
+- ✅ **Free tier friendly** – Groq free tier, Gemini free tier, Meta 1000 free conversations/month.
+- ✅ **Easy deployment** – Render, Railway, or your own VPS.
+- ✅ **Customizable prompts** – Change the AI personality easily.
+- ✅ **Production-grade logging** – See every incoming message and error.
+- ✅ **Simple web dashboard** – Check bot status at a glance.
 
 ---
 
 ## 🏗️ Architecture Overview
 
-```text
-[Customer] ---> (WhatsApp) ---> [Meta Cloud API] ---> (HTTP POST Webhook) ---> [FastAPI Server]
-                                                                                     |
-                                                                                     v
-                                                                            [AI Failover Router]
-                                                                                     |
-                                                                            (Primary) Groq Llama 3.3
-                                                                                     | (on failure)
-                                                                            (Fallback) Gemini 2.0 Flash
-                                                                                     |
-                                                                                     v
-                                                                          [Order Extraction Engine]
-                                                                                     |
-                                                                                     +---> [Anna Cockpit / POS Dispatch]
-                                                                                     |
-[Customer] <--- (WhatsApp) <--- [Meta Cloud API] <--- (HTTP POST Reply) <------------+
+
+[Customer] ---(WhatsApp)---> [Meta Cloud API] ---(HTTP POST)---> [Your Server: FastAPI]
+|
+v
+[AI Failover Layer]
+|
+(Primary) Groq Llama 3.3
+| (if fails)
+(Fallback) Gemini 2.0 Flash
+|
+v
+[Reply back to Meta API]
+|
+v
+[Customer] <---(WhatsApp)--- [Meta Cloud API] <---(HTTP POST)--- [Your Server]
+
+
 **Data flow:**
 1. Customer sends a message to your business WhatsApp number.
 2. Meta forwards it to your webhook URL (`/webhook`).
