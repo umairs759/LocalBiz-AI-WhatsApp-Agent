@@ -398,7 +398,7 @@ Then restart the server. The frontend dashboard will use /health to show status.
 
 
 ## 📁 Project Structure
-LocalBiz-AI-WhatsApp-Agent/
+```LocalBiz-AI-WhatsApp-Agent/
 │
 ├── backend/
 │ ├── __init__.py # Makes backend a Python package
@@ -418,7 +418,7 @@ LocalBiz-AI-WhatsApp-Agent/
 ├── LICENSE # MIT License
 ├── README.md # This file
 └── CONTRIBUTING.md # Guidelines for contributors
-
+```
 ```Note: The __init__.py files can be completely empty. They just signal Python that the folders are importable packages. ```
 
 ## 🤝 Contributing
