@@ -523,3 +523,13 @@ We are continuously evolving this project into the ultimate AI automation tool. 
   <b>If this project helped you save SaaS fees, please consider giving it a ⭐ on GitHub and sharing it with local business owners!</b>
 </div>
 
+
+---
+
+## 🔒 Privacy & Data Handling Policy {#privacy}
+
+LocalBiz AI is engineered with strict data isolation and enterprise-grade privacy principles:
+- **Zero Retention of Ephemeral Chats:** Customer messages parsed during food ordering sessions are processed in-memory for intent extraction and discarded post-dispatch.
+- **Direct Merchant-Customer Channel:** WhatsApp communication runs via official Meta Cloud API directly through the business's registered WhatsApp Business Account (WABA).
+- **Stateless Tool Execution:** The Anna OS Executa runtime (`tool-umairs759-localbiz-official-bcxnqkk6`) executes sandboxed order dispatch routines without long-term personal identifier tracking.
+- **Compliance:** Built to comply with local commercial privacy standards and standard Anna AI OS app store sandbox constraints.
