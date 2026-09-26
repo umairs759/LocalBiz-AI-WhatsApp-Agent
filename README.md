@@ -1,3 +1,13 @@
+<div align="center">
+  <img src="logo.png" alt="LocalBiz AI Logo" width="100"/>
+  <h1>LocalBiz AI — Autonomous Restaurant Receptionist</h1>
+  <p><b>24/7 AI-Powered WhatsApp Food Ordering, Dispatch Engine & Live POS Cockpit for Anna AI OS</b></p>
+
+  <img src="cover.png" alt="LocalBiz AI Cockpit Banner" width="100%"/>
+</div>
+
+---
+
 # 🚀 LocalBiz AI WhatsApp Agent – Free SaaS Alternative for Local Businesses
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
