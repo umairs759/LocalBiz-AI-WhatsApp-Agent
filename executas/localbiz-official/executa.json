@@ -1,0 +1,23 @@
+{
+  "name": "LocalBiz Official",
+  "slug": "localbiz-official",
+  "tool_id": "tool-dev-localbiz-official",
+  "version": "0.1.0",
+  "description": "LocalBiz AI WhatsApp Restaurant Ordering and Dispatch Engine",
+  "runtime": "python",
+  "entrypoint": "localbiz_official_plugin.py",
+  "tools": [
+    {
+      "name": "order_dispatch",
+      "description": "Process food orders, calculate delivery charges, and generate KOT receipts",
+      "parameters": [
+        {
+          "name": "customer_message",
+          "type": "string",
+          "required": true,
+          "description": "WhatsApp incoming message text"
+        }
+      ]
+    }
+  ]
+}

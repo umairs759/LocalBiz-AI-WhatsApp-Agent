@@ -7,3 +7,9 @@ venv/
 *.zip
 __pycache__/
 *.egg-info/
+
+.anna/
+*.pat
+credentials.json
+__pycache__/
+*.pyc
